@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nugget name="ZPG_OS_COMMANDS">
+ <PROG NAME="ZPG_OS_COMMANDS" VARCL="X" SUBC="1" RMAND="300" RLOAD="E" FIXPT="X" UCCHECK="X">
+  <textPool>
+   <language SPRAS="E">
+    <textElement ID="R" ENTRY="Run OS Commands" LENGTH="15 "/>
+    <textElement ID="S" KEY="P_ADD" ENTRY="        Additional Parameter" LENGTH="28 "/>
+    <textElement ID="S" KEY="P_CMD" ENTRY="        Command name" LENGTH="20 "/>
+   </language>
+  </textPool>
+  <source>*&amp;---------------------------------------------------------------------*
+*&amp; Report  ZPG_OS_COMMANDS
+*&amp;
+*&amp;---------------------------------------------------------------------*
+*&amp;
+*&amp;
+*&amp;---------------------------------------------------------------------*
+REPORT ZPG_OS_COMMANDS.
+
+INCLUDE ZIN_OS_COMMANDS_TOP                     .    &quot; global Data
+
+* INCLUDE ZIN_OS_COMMANDS_O01                     .  &quot; PBO-Modules
+* INCLUDE ZIN_OS_COMMANDS_I01                     .  &quot; PAI-Modules
+INCLUDE ZIN_OS_COMMANDS_F01                     .  &quot; FORM-Routines
+
+AT SELECTION-SCREEN ON VALUE-REQUEST FOR P_CMD.
+  PERFORM SH_COMMAND_NAME.
+
+START-OF-SELECTION.
+  PERFORM MAIN.</source>
+ </PROG>
+</nugget>
